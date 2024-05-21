@@ -1,5 +1,5 @@
 # Cyberscraper-Leaderboard
-Detta är ett spel där spelaren går runt och löser pussel för att gå till nästa nivå och få ett nytt highscore. Projektet inkluderar flera scripts som hanterar mottagning, sortering och visning av highscores för alla spelare.
+Du spelar som Javad, en skicklig hacker som navigerar genom tankekrävande pussel och mystiska utmaningar för att aktivera hissar och ta sig till nästa våning. Genom att hacka datasystem övervinner du hinder och erövrar nya rekord i highscore. Detta innovativa spel föddes ur en game jam med temat cyber-säkerhet, vilket återspeglas i dess spännande och futuristiska miljö. Projektet inkluderar flera scripts som hanterar mottagning, sortering och visning av highscores för alla spelare.
 
 Teknologier
 Projektet är skapat med:
