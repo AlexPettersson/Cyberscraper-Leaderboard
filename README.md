@@ -129,4 +129,4 @@ public class Send : MonoBehaviour
 Med dessa scripts kan spelare skicka sina highscores till servern, där de sorteras och visas på en webbsida, vilket ger en översikt över alla spelares prestationer.
 Text som består av olika förekomande variabler som gör att flera delar av koden ändras om man ändrar en sak för att underlätta. 💻
 Kontakt
-Skapad av Alex Pettersson & Martin Rockström (bidragare) - gärna kontakta oss! alex.pettersson@elev.ga.ntig.se eller martin.rockstrom@elev.ga.ntig.se 📞
+Skapad av Alex Pettersson & Martin Rockström - gärna kontakta oss! alex.pettersson@elev.ga.ntig.se eller martin.rockstrom@elev.ga.ntig.se 📞
