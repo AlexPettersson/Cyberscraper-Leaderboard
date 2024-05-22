@@ -13,7 +13,7 @@ För att köra detta projekt, installera det lokalt genom att följa dessa steg:
 Klona detta repo till din lokala maskin med:
 bash
 Kopiera kod
-git clone https://github.com/AlexPettersson/PuzzleGame.git
+git clone [https://github.com/AlexPettersson/PuzzleGame.git](https://github.com/AlexPettersson/Cyberscraper-Leaderboard)
 Installera alla nödvändiga paket med:
 bash
 Kopiera kod
