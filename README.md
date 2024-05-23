@@ -34,48 +34,65 @@ Flask-appen hanterar mottagning och visning av highscores.
 
 python
 Kopiera kod
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import os
 
 app = Flask(__name__)
 
-file_path = "received_data.txt"
-if not os.path.exists(file_path):
-    open(file_path, 'a').close()  # Skapa filen om den inte finns
-os.chmod(file_path, 0o777)  # Ställ in filbehörigheter för att tillåta läs- och skrivåtkomst för alla användare
+class FileHandler:
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self._ensure_file_exists()
 
-def save_data_to_file(data):
-    try:
-        with open(file_path, "a") as f:
-            f.write(data)
-    except Exception as e:
-        print("Error saving data to file:", e)
+    def _ensure_file_exists(self):
+        if not os.path.exists(self.file_path):
+            open(self.file_path, 'a').close()
+        os.chmod(self.file_path, 0o777)
 
-def read_data_from_file():
-    try:
-        with open(file_path, "r") as f:
-            lines = f.readlines()
-            # Sortera rader baserat på det numeriska värdet i början av varje rad
-            sorted_content = sorted(lines, key=lambda x: float(x.split()[0]), reverse=True)
-            return sorted_content
-    except Exception as e:
-        print("Error reading data from file:", e)
-        return None
+    def save_data(self, data):
+        try:
+            with open(self.file_path, "a") as f:
+                f.write(data + "\n")
+        except Exception as e:
+            print("Error saving data to file:", e)
+
+    def read_data(self):
+        try:
+            with open(self.file_path, "r") as f:
+                lines = f.readlines()
+                sorted_content = sorted(lines, key=lambda x: float(x.split()[0]), reverse=True)
+                return sorted_content
+        except Exception as e:
+            print("Error reading data from file:", e)
+            return None
+
+file_handler = FileHandler("received_data.txt")
 
 @app.route('/', methods=['GET', 'POST'])
 def receive_data():
     if request.method == 'POST':
         data = request.form.get('data')
-        save_data_to_file(data)
+        if data:
+            file_handler.save_data(data)
 
-    sorted_content = read_data_from_file()
+    sorted_content = file_handler.read_data()
     if sorted_content:
         return render_template('index.html', sorted_content=sorted_content)
     else:
         return "Error reading data from file"
 
+@app.route('/test', methods=['POST'])
+def test_data():
+    data = request.json.get('data')
+    if data:
+        file_handler.save_data(data)
+        return jsonify({"message": "Data received and saved."}), 200
+    else:
+        return jsonify({"error": "No data provided"}), 400
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
+
 Unity C# Script
 Unity-skriptet skickar highscore till servern när spelaren har klarat en nivå.
 
