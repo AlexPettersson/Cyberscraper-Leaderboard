@@ -34,6 +34,7 @@ Flask-appen hanterar mottagning och visning av highscores.
 
 python
 Kopiera kod
+
 from flask import Flask, request, render_template, jsonify
 import os
 
