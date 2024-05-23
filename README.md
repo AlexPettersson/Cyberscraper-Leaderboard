@@ -111,7 +111,7 @@ public class Send : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("data", post);
         
-        using (UnityWebRequest www = UnityWebRequest.Post("https://63abc309-e44c-4e38-8f5f-fedb06a8db09-00-hhzd08itb3te.worf.replit.dev/", form)) // Uppdatera URL med din Replit app URL
+        using (UnityWebRequest www = UnityWebRequest.Post("[https://63abc309-e44c-4e38-8f5f-fedb06a8db09-00-hhzd08itb3te.worf.replit.dev/](https://leaderboard-cyper-scraper.replit.app/)", form)) // Uppdatera URL med din Replit app URL
         {
             yield return www.SendWebRequest();
 
